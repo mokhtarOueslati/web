@@ -1,0 +1,75 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+    <div style="">
+
+       <center> <div> <h2 style="">La liste des Randonnees </h2></div></center><br><br>
+        {% if app.session.flashBag.has('fail') %}
+            <div style=" width: 40%">
+                <div class="alert alert-danger" >
+                    {% for msg in app.session.flashBag.get('fail') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+    <div >
+            <a href="{{ path('Randonnee_new') }}"><h4 style="text-decoration: solid;color: cadetblue">Creer votre Randonnee ...</h4></a>
+    </div> <br><br>
+
+        <center>
+            <div >
+                <table>
+                    <tr>
+                        <td><a href="{{path('recherche' )}}" style="color: black" >  <button type="button" class="btn btn-outline-primary"> Filtrer</button> </a></td>
+                        <td><a href="{{path('liste' )}}"style="color: black">  <button type="button" class="btn btn-outline-primary">Voir les reactions</button></a></td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+        <br><br>
+
+        {% for Randonnee in Randonnees %}
+
+            <div class="post-content" >
+
+<table>
+                <tr><td width="50%"><h3 style="color:#122b40">{{ Randonnee.text }}</h3><br>
+
+                {% if Randonnee.path != null %}
+                    <img style="width: 400px;height: 200px; margin-bottom: 10%" src="{{ asset("uploads/Randonnees/" ~ Randonnee.path)}}"  >
+                {% endif %}
+                <tr><td width="50%"><h3 style="color:#122b40">Destination: {{ Randonnee.destination }}</h3><br>
+    <tr><td width="50%"><h3 style="color:#122b40">Date de depart:{{ Randonnee.datedepart|date("d/m/Y")  }}</h3><br>
+    <tr><td width="50%"><h3 style="color:#122b40">Nombres de places:{{ Randonnee.places }}</h3><br>
+
+                <h4 style="color:#2A3542"> creer le : {{ Randonnee.date|date("d/m/Y") }} | Par : <u><a href="{{ path('profil1') }}"> {{ Randonnee.user }} </a></u></h4><br>
+                <div class="reaction">
+
+                    <a  href="{{path('jaime', { 'id': Randonnee.id })}}"class="btn text-green"><i class="icon ion-thumbsup"></i> {{ Randonnee.jaime }}</a>
+                    <a  href="{{path('jaimepas', { 'id': Randonnee.id })}}" class="btn text-red"><i class="fa fa-thumbs-down"></i>{{  Randonnee.jaimepas }}</a>
+                </div></td>
+
+                <td width="10%">
+                        <ul><br><br>
+                            <a class="btn btn-round btn-default"  style="width: 80%"href={{ path('map',{'id':Randonnee.id}) }}> Localiser</a><br><br>
+                            <a class="btn btn-round btn-default" style="width: 80%" href={{ path('convert',{'id':Randonnee.id}) }}>Reserver</a><br><br>
+                            {% if  app.user==Randonnee.user  %}
+                                <a class="btn btn-round btn-info" style="width: 80%" href="{{ path('Randonnee_edit', { 'id': Randonnee.id }) }}">Modifier</a><br><br>
+                                <a class="btn btn-round btn-danger" style="width: 80%" href="{{ path('supp', { 'id': Randonnee.id }) }}">Supprimer</a><br><br><br>
+                            {% endif %}
+                        </ul></td></tr>
+</table>
+            </div>
+
+        {% endfor %}
+
+
+
+
+
+{% endblock %}
+
+

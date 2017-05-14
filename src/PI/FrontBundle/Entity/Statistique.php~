@@ -1,0 +1,181 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: smart_tech_plus
+ * Date: 02/02/2017
+ * Time: 20:25
+ */
+
+namespace PI\FrontBundle\Entity;
+use Doctrine\ORM\Mapping as ORM ;
+/**
+ * Class Tache
+ * @package PI\FrontBundle\Entity
+ */
+
+/**
+ * @ORM\Entity()
+ */
+class Statistique
+{
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_publication;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_reunion;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_tache;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_evenement;
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nbPublication
+     *
+     * @param integer $nbPublication
+     *
+     * @return Statistique
+     */
+    public function setNbPublication($nbPublication)
+    {
+        $this->nb_publication = $nbPublication;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPublication
+     *
+     * @return integer
+     */
+    public function getNbPublication()
+    {
+        return $this->nb_publication;
+    }
+
+    /**
+     * Set nbReunion
+     *
+     * @param integer $nbReunion
+     *
+     * @return Statistique
+     */
+    public function setNbReunion($nbReunion)
+    {
+        $this->nb_reunion = $nbReunion;
+
+        return $this;
+    }
+
+    /**
+     * Get nbReunion
+     *
+     * @return integer
+     */
+    public function getNbReunion()
+    {
+        return $this->nb_reunion;
+    }
+
+    /**
+     * Set nbTache
+     *
+     * @param integer $nbTache
+     *
+     * @return Statistique
+     */
+    public function setNbTache($nbTache)
+    {
+        $this->nb_tache = $nbTache;
+
+        return $this;
+    }
+
+    /**
+     * Get nbTache
+     *
+     * @return integer
+     */
+    public function getNbTache()
+    {
+        return $this->nb_tache;
+    }
+
+    /**
+     * Set nbEvenement
+     *
+     * @param integer $nbEvenement
+     *
+     * @return Statistique
+     */
+    public function setNbEvenement($nbEvenement)
+    {
+        $this->nb_evenement = $nbEvenement;
+
+        return $this;
+    }
+
+    /**
+     * Get nbEvenement
+     *
+     * @return integer
+     */
+    public function getNbEvenement()
+    {
+        return $this->nb_evenement;
+    }
+
+    /**
+     * Set employe
+     *
+     * @param \PI\FrontBundle\Entity\Employe $employe
+     *
+     * @return Statistique
+     */
+    public function setEmploye(\PI\FrontBundle\Entity\Employe $employe = null)
+    {
+        $this->employe = $employe;
+
+        return $this;
+    }
+
+    /**
+     * Get employe
+     *
+     * @return \PI\FrontBundle\Entity\Employe
+     */
+    public function getEmploye()
+    {
+        return $this->employe;
+    }
+}

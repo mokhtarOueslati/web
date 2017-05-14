@@ -1,0 +1,113 @@
+pi_front_publication:
+    resource: "@PIFrontBundle/Resources/config/routing/randonnee.yml"
+    prefix:  /randonnee
+
+pi_front_homepage:
+    path:     /front
+    defaults: { _controller: PIFrontBundle:Front:indexFront }
+pi_back_homepage:
+    path:     /back
+    defaults: { _controller: PIFrontBundle:Back:indexBack }
+pi_back_ajouter_tache:
+    path:     /ajouterTache
+    defaults: { _controller: PIFrontBundle:Back:ajouterTache }
+pi_back_liste_taches:
+    path:     /listeTache
+    defaults: { _controller: PIFrontBundle:Back:listeTache }
+pi_back_ajoutEve:
+    path:     /ajoutEve
+    defaults: { _controller: PIFrontBundle:Back:ajoutEve }
+pi_back_listeEve:
+    path:     /listeEve
+    defaults: { _controller: PIFrontBundle:Back:listeEve }
+pi_back_SuppEve:
+    path:     /SuppEve/{id}
+    defaults: { _controller: PIFrontBundle:Back:SuppEve }
+pi_back_modifEve:
+    path:     /modifEve/{id}
+    defaults: { _controller: PIFrontBundle:Back:modifEve }
+
+pi_front_act:
+    path:     /actualite
+    defaults: { _controller: PIFrontBundle:Front:actualite }
+
+pi_front_evenement:
+    path:     /evenement
+    defaults: { _controller: PIFrontBundle:Front:evenement }
+
+pi_front_tache:
+    path:     /tache
+    defaults: { _controller: PIFrontBundle:Front:tache }
+
+pi_front_vente:
+    path:     /vente
+    defaults: { _controller: PIFrontBundle:Front:ventelocation }
+
+pi_front_conge:
+    path:     /conge
+    defaults: { _controller: PIFrontBundle:Front:conge }
+
+
+pi_front_forum:
+    path:     /forum
+    defaults: { _controller: PIFrontBundle:Front:forum }
+
+
+pi_front_msg:
+    path:     /messages
+    defaults: { _controller: PIFrontBundle:Front:messages }
+
+pi_front_profil:
+    path:     /profil
+    defaults: { _controller: PIFrontBundle:Front:profil1 }
+
+jaime:
+    path:     /randonnee/{id}/jaime
+    defaults: { _controller: PIFrontBundle:Randonnee:jaime }
+    methods: [GET,POST]
+
+jaimepas:
+    path:     /randonnee/{id}/jaimepas
+    defaults: { _controller: PIFrontBundle:Randonnee:jaimepas }
+    methods: [GET,POST]
+
+recherche:
+    path:     /randonnee/recherche
+    defaults: { _controller: PIFrontBundle:Randonnee:recherche }
+    methods: [GET,POST]
+
+supp:
+    path:     /randonnee/{id}/supp
+    defaults: { _controller: PIFrontBundle:Randonnee:supp }
+    methods: [GET,POST]
+
+affback:
+    path:     /affback
+    defaults: { _controller: PIFrontBundle:Randonnee:affback }
+    methods: [GET,POST]
+
+suppback:
+    path:     /affback/{id}/suppback
+    defaults: { _controller: PIFrontBundle:Randonnee:suppback }
+    methods: [GET,POST]
+
+convert:
+    path:     /convert/{id}
+    defaults: { _controller: PIFrontBundle:Randonnee:reserver }
+    methods: [GET,POST]
+
+liste:
+    path:     /liste
+    defaults: { _controller: PIFrontBundle:Randonnee:liste }
+    methods: [GET,POST]
+
+profil1:
+    path:     /randonnee/profil
+    defaults: { _controller: PIFrontBundle:Front:profil1 }
+    methods: [GET,POST]
+
+
+map:
+    path:     /randonnee/{id}/map
+    defaults: { _controller: PIFrontBundle:Randonnee:map }
+    methods: [GET,POST]

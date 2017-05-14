@@ -1,0 +1,60 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+
+{% block body %}
+
+
+    <div class="container">
+
+        <div>
+            <input class="btn btn-success" id="submit" type="button"  value="Localiser">
+        </div>
+
+        <div style='overflow:hidden;height:350px;width:700px;'>
+
+            <div id='gmap_canvas' style='height:400px;width:700px;'></div>
+            <div><small><a href="http://embedgooglemaps.com">embed google maps</a></small></div>
+            <div><small><a href="https://ultimatewebtraffic.com/">ultimate web traffic knowledge base</a></small>
+            </div>
+            <style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
+
+        <div style="padding-left: 40% ">
+            <input id="address" type="text" style="display: none" value="{{ M }}">
+        </div>
+    </div>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
+                zoom: 17,
+                center: {lat: 36.8984435, lng: 10.1880368}
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function (results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    })
+                }
+                else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9uw3HbHTUunHCLJhZHs1gWguEi81-mbY&callback=initMap">
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+<?php
+namespace PI\FrontBundle\Entity;
+use Doctrine\ORM\Mapping as ORM ;
+/**
+* Class Publication
+ * @package PI\FrontBundle\Entity
+*/
+
+/**
+ * @ORM\Entity
+ */
+
+class Publication {
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+
+
+     * @ORM\Column(type="string",length=255)
+     */
+    private $text;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+
+    private $user;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }/**
+ * @return mixed
+ */
+public function getText()
+{
+    return $this->text;
+}/**
+ * @param mixed $text
+ */
+public function setText($text)
+{
+    $this->text = $text;
+}/**
+ * @return mixed
+ */
+public function getUser()
+{
+    return $this->user;
+}/**
+ * @param mixed $user
+ */
+public function setUser($user)
+{
+    $this->user = $user;
+}
+
+}

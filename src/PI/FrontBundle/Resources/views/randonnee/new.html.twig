@@ -1,0 +1,19 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+    <br>
+    <h2>Creer votre Randonnee</h2> <br><br>
+
+    {{ form_start(form) }}
+
+
+    {{ form_label(form.text) }}
+    {{ form_widget(form.text,{'attr':{'class':'form-control','placeholder':'Ajouter une description ...'}}) }}
+        {{ form_widget(form) }}
+
+<br>
+      <a href="{{ path('Randonnee_index') }}"></a>  <input type="submit" value="Ajouter" class="btn btn-round btn-info"  />
+    {{ form_end(form) }}
+
+
+{% endblock %}

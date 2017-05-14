@@ -1,0 +1,46 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+<br><br><br>
+    <div >
+        <a href="{{ path('Randonnee_new') }}"><h4 style="text-decoration: solid;color: cadetblue">Creer votre Randonnee ...</h4></a>
+    </div> <br><br>
+    {% for Randonnee in Randonnees %}
+
+        <div class="post-content" >
+
+            <table>
+                <tr><td width="50%"><h3 style="color:#122b40">{{ Randonnee.text }}</h3><br>
+
+                        {% if Randonnee.path != null %}
+                            <img style="width: 400px;height: 200px; margin-bottom: 10%" src="{{ asset("uploads/Randonnees/" ~ Randonnee.path)}}"  >
+                        {% endif %}
+                <tr><td width="50%"><h3 style="color:#122b40">destination: {{ Randonnee.destination }}</h3><br>
+                <tr><td width="50%"><h3 style="color:#122b40">Date de depart:{{ Randonnee.datedepart|date("d/m/Y")  }}</h3><br>
+                <tr><td width="50%"><h3 style="color:#122b40">Nombres de places:{{ Randonnee.places }}</h3><br>
+
+                        <h4 style="color:#2A3542"> Creer le : {{ Randonnee.date|date("m/d/Y") }} | Par : <u> {{ Randonnee.user }} </u></h4><br>
+                        <div class="reaction">
+                            <a  href="{{path('jaime', { 'id': Randonnee.id })}}"class="btn text-green"><i class="icon ion-thumbsup"></i> {{ Randonnee.jaime }}</a>
+                            <a  href="{{path('jaimepas', { 'id': Randonnee.id })}}" class="btn text-red"><i class="fa fa-thumbs-down"></i>{{  Randonnee.jaimepas }}</a>
+                        </div></td>
+
+                    <td width="10%">
+                        <ul><br><br>
+                            <a class="btn btn-round btn-default" style="width: 80%"href={{ path('map') }}> Localiser</a><br><br>
+                            <a class="btn btn-round btn-default" style="width: 80%" href={{ path('convert',{'id':Randonnee.id}) }}>Reserver</a><br><br>
+                            {% if  app.user==Randonnee.user  %}
+                                <a class="btn btn-round btn-info" style="width: 80%" href="{{ path('Randonnee_edit', { 'id': Randonnee.id }) }}">Modifier</a><br><br>
+                                <a class="btn btn-round btn-danger" style="width: 80%" href="{{ path('supp', { 'id': Randonnee.id }) }}">Supprimer</a><br><br><br>
+                            {% endif %}
+                        </ul></td></tr>
+            </table>
+        </div>
+
+    {% endfor %}
+
+
+
+
+{% endblock %}

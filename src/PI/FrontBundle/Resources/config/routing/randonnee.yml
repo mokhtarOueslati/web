@@ -1,0 +1,37 @@
+Randonnee_index:
+    path:     /
+    defaults: { _controller: "PIFrontBundle:Randonnee:index" }
+    methods:  GET
+Randonnee_show:
+    path:     /{id}/show
+    defaults: { _controller: "PIFrontBundle:Randonnee:show" }
+    methods:  GET
+
+Randonnee_new:
+    path:     /new
+    defaults: { _controller: "PIFrontBundle:Randonnee:new" }
+    methods:  [GET, POST]
+
+Randonnee_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PIFrontBundle:Randonnee:edit" }
+    methods:  [GET, POST]
+
+Randonnee_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PIFrontBundle:Randonnee:delete" }
+    methods:  DELETE
+
+jaime:
+    path:     /{id}/jaime
+    defaults: { _controller: "PIFrontBundle:Randonnee:jaime" }
+    methods: [GET,POST]
+
+recherche:
+    path:     /aff
+    defaults: { _controller: "PIFrontBundle:Randonnee:aff" }
+    methods:  GET
+
+
+
+
